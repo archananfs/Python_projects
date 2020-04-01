@@ -14,10 +14,10 @@ def password_generate(length):
 
     symbol = ['@', '#', '$', '%', '=', ':', '?', '.', '/', '|', '~', '>','*', '(', ')', '<']
     all_list = lower_char+upper_char+symbol+digits
-    pass_temp =''
+    pass_1 = random.choice(str(digits))+random.choice(symbol)+random.choice(upper_char)+random.choice(lower_char)
 
-    for i in range(length+1):
-        pass_temp = random.choice(all_list)+pass_temp
-    return pass_temp
+    for i in range(length-4):
+        pass_1 = pass_1 + str(random.choice(all_list))
+    return pass_1
 
 
