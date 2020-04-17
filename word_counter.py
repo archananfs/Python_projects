@@ -3,6 +3,8 @@ import string
 from collections import Counter
 nltk.download("punkt")
 nltk.download("stopwords")
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 # This function displays most common word
 def most_common_word(text):
@@ -17,8 +19,7 @@ def filtered_words(text):
     words = nltk.word_tokenize(text)
     # list of stop words and punctuation
     words_no_use = nltk.corpus.stopwords.words("english") + list(string.punctuation)
-    return [
-        word for word in words if not word in words_no_use]
+    return [word for word in words if not word in words_no_use]
 
 
 # Sample text is taken from Wikipedia Link: https://en.wikipedia.org/wiki/Main_Page
@@ -37,3 +38,10 @@ adapted to browsing. """
 
 
 most_common_word(sample_text)
+# Displaying most common Words in an image
+word_cloud = WordCloud().generate(sample_text)
+
+plt.imshow(word_cloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+
